@@ -83,7 +83,7 @@ async def get_photo(message: types.Message):
         photo_to_send = await edit_this_photo(photo_from_user)
         await message.answer('Процесс запущен! Боже, что же мы наделали?')
         await message.answer_photo(open(photo_to_send, mode='rb'))
-        pathlib.Path(photo_to_send).unlink() #удаляем обработанную фотографию.
+        pathlib.Path(photo_to_send).unlink()  # удаляем обработанную фотографию.
 
 
 async def edit_this_photo(photo, text=None):
@@ -98,11 +98,11 @@ async def edit_this_photo(photo, text=None):
     await photo.download(photo_name)
     photo = Image.open(photo_name)
     photo_edit = ImageDraw.Draw(photo)
-    font_size = (photo.width // len(text_to_add)) * 2 - 5 #подбираем наиболее подходящий размер текста
+    font_size = (photo.width // len(text_to_add)) * 2 - 5  # подбираем наиболее подходящий размер текста
     font = ImageFont.truetype('bot/fonts/Lobster-Regular.ttf', font_size)
-    x, y = photo.width // 2, photo.height - 30  #рассчитываем расположение текста.
-    photo_edit.text(text=text_to_add, xy=(x, y), font=font, fill='black', anchor='ms') #добавляем тень тексту.
-    photo_edit.text(text=text_to_add, xy=(x, y + 2), font=font, fill='white', anchor='ms') 
+    x, y = photo.width // 2, photo.height - 30  # рассчитываем расположение текста.
+    photo_edit.text(text=text_to_add, xy=(x, y), font=font, fill='black', anchor='ms')  # добавляем тень тексту.
+    photo_edit.text(text=text_to_add, xy=(x, y + 2), font=font, fill='white', anchor='ms')
     photo.save(photo_edit_name)
     pathlib.Path(photo_name).unlink()
     return photo_edit_name
@@ -114,7 +114,6 @@ def talk_handlers_register(dp: Dispatcher):
                                 state=ChatInPrivate.actions_action)
     dp.register_message_handler(get_photo, content_types=['photo'], state=ChatInPrivate.actions_action)
     dp.register_message_handler(trash_talk, state=ChatInPrivate.actions_action)
-
 
 
 def make_own_mem_handlers_register(dp: Dispatcher):

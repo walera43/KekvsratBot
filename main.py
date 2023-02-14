@@ -2,10 +2,12 @@ import json
 from aiogram import executor
 
 from core import dp
+from db import create_db_and_tables
 from loader import groups_data
 
+
 async def on_startup(dispatcher):
-    print('Бот запустился')
+    await create_db_and_tables()
 
 
 async def on_shutdown(dispatcher):

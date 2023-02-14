@@ -4,7 +4,7 @@ from aiogram.contrib.fsm_storage.memory import MemoryStorage
 
 import config
 from bot.handlers.groups import group_handlers_register
-from bot.handlers.user import (make_own_mem_handlers_register,
+from bot.handlers.users import (make_own_mem_handlers_register,
                                talk_handlers_register)
 
 storage = MemoryStorage()

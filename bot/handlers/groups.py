@@ -9,7 +9,7 @@ from config import BOT_ID
 from random2 import randint
 from loader import groups_data
 
-from .user import edit_this_photo
+from .users import edit_this_photo
 
 
 async def change_chance(message: types.Message):
